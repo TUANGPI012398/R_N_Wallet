@@ -13,7 +13,7 @@ if(process.env.NODE_ENV === "production") job.start(); // Start the cron job onl
 
 // const PORT = process.env.PORT || 5001;
 
-app.get("api/health", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
 
