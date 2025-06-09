@@ -16,7 +16,7 @@ export async function initDB() {
                 category VARCHAR(255) NOT NULL,
                 created_at DATE NOT NULL DEFAULT CURRENT_DATE
             );
-        `; // <-- The SQL query ends here with backticks and a semicolon
+        `; // -- The SQL query ends here with backticks and a semicolon
         console.log("Database initialized successfully");
     } catch (error) {
         console.log("Error initializing DB", error);

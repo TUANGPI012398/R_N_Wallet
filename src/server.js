@@ -2,13 +2,20 @@ import express from "express";
 import { initDB, PORT } from './config/db.js';
 import dotenv from "dotenv";
 import ratelimiter from "./middleware/rateLimiter.js";
-import transactionRoute from "./routes/transactionRoute.js"; // Adjust the import path as necessary
+import transactionRoute from "./routes/transactionRoute.js"; 
+import job from "./config/cron.js";
 
 
 dotenv.config();
 
 const app = express();
+if(process.env.NODE_ENV === "production") job.start(); // Start the cron job only in non-production environments
+
 // const PORT = process.env.PORT || 5001;
+
+app.get("api/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 // Middleware 
 app.use(express.json());
